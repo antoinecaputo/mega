@@ -4,7 +4,7 @@ The support desk merged 412 reports into ticket #4471 and marked it known. It is
 
 | problem | reports | ticket |
 |---|---|---|
-| shared parser reads day-first dates month first (day/month swap) | 374 | [#1](https://github.com/antoinecaputo/mega/issues/1) |
+| shared parser reads day-first dates month first (day/month swap) | 379 (incl. the 5 below, as the desk counts) | [#1](https://github.com/antoinecaputo/mega/issues/1) |
 | booking-v3 form hint says `MM/DD/YYYY`, form reads day first | 33 | [#2](https://github.com/antoinecaputo/mega/issues/2) |
 | date moves by one day, no swap (timezone) | 5 | [#3](https://github.com/antoinecaputo/mega/issues/3) |
 

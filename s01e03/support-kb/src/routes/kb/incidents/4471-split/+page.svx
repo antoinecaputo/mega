@@ -32,19 +32,21 @@ Not known. Three problems, three tickets. Fixing the parser leaves the other two
   symptom as `parser`, different code.
 - **`shift`**: the date moves by one day and day and month stay in order. "Client in Lisbon got
   Tuesday. Client in Toronto got Monday." That is a timezone, not a parser. The desk had flagged
-  these as one-day moves; the #4471 table still files them under `parser`.
+  these as one-day moves. They stay counted under `parser`, where the desk files them, and get
+  their own ticket.
 
 ## Why one ticket hid them
 
 - Merged by subject ([decision 0001](/kb/decisions/0001-dedupe-by-subject)): all three problems
   arrive as "Wrong day on the invite", so the subject can't tell them apart.
-- Split by intake tag: the tag is a guess from the reporter's browser. It is wrong for a share of
-  every row above ("intake tag right"). The cause follows from the tenant, its form and the way in.
+- Split by intake tag: the tag is a guess from the reporter's browser, and it is wrong for a share
+  of both `parser` and `hint` (see "tagged as" below). The cause follows from the tenant, its form
+  and the way in.
 - The export repeats reports across pages: count unique ids, not rows.
 
 ## The table #4471 shows
 
-The same reports through the desk's own `CauseTable`, for comparison. It has no row for `shift`.
+The same reports through the desk's own `CauseTable`, for comparison: it gives `shift` a footnote, not a row, and no ticket to `hint`.
 
 <CauseTable ticket={4471} />
 
