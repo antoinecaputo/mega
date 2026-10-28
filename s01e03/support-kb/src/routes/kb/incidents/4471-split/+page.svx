@@ -1,0 +1,57 @@
+---
+layout: runbook
+title: '#4471 split · three problems, three tickets'
+owner: Antoine Caputo
+status: open
+reviewed: 2026-10-28
+signature: Antoine Caputo
+---
+
+<script>
+  import SplitTable from '#lib/kb/SplitTable.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) says one issue, one fix queued. Read the reports and it is three
+problems, and the queued parser fix closes only the first.
+
+<Callout kind="warn">
+Not known. Three problems, three tickets. Fixing the parser leaves the other two open.
+</Callout>
+
+## What the reports show
+
+<SplitTable ticket={4471} />
+
+- **`parser`**: every tenant on file writes the day first; the shared parser reads month first.
+  A booking for 4 March becomes 3 April. App, email, and the booking-v2 form.
+- **`hint`**: the booking-v3 form prints `MM/DD/YYYY` under its date field. People type what it
+  says, and the form reads it day first. Only booking-v3 tenants, only through the form. Same
+  symptom as `parser`, different code.
+- **`shift`**: the date moves by one day and day and month stay in order. "Client in Lisbon got
+  Tuesday. Client in Toronto got Monday." That is a timezone, not a parser. The desk had flagged
+  these as one-day moves; the #4471 table still files them under `parser`.
+
+## Why one ticket hid them
+
+- Merged by subject ([decision 0001](/kb/decisions/0001-dedupe-by-subject)): all three problems
+  arrive as "Wrong day on the invite", so the subject can't tell them apart.
+- Split by intake tag: the tag is a guess from the reporter's browser. It is wrong for a share of
+  every row above ("intake tag right"). The cause follows from the tenant, its form and the way in.
+- The export repeats reports across pages: count unique ids, not rows.
+
+## The table #4471 shows
+
+The same reports through the desk's own `CauseTable`, for comparison. It has no row for `shift`.
+
+<CauseTable ticket={4471} />
+
+## Lessons
+
+- A big ticket can be several bugs with one symptom. Before you mark it known, check that one fix
+  closes every report in it.
+- Read the body when the subject is the same. The subject is what people feel, not what broke.
+
+<RenderStamp {signature} />
