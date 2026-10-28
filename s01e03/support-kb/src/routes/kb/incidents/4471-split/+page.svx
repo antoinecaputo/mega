@@ -4,7 +4,7 @@ title: '#4471 split · three problems, three tickets'
 owner: Antoine Caputo
 status: open
 reviewed: 2026-10-28
-signature: Antoine Caputo
+signature: 'v1.eyJzdWIiOiIzNDYiLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdCI6MTc5MzIxMDE3NSwiZXhwIjoxNzkzMjk2NTc1fQ.wpO2A27t9ysLI7zO2pFqWWLueLk_j5iyJVb7KRVBo6k'
 ---
 
 <script>
